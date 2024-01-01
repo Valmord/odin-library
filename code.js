@@ -15,7 +15,7 @@ const myLibrary = [
         haveRead: true
     },
     {   title:"The Hunger Games", 
-        author:"Syzanne Collins", 
+        author:"Suzanne Collins", 
         pages: 367, 
         haveRead: false
     },
@@ -64,3 +64,20 @@ function displayLibrary(){
     }
     booksTable.innerHTML = libraryTable;
 }
+
+const form = document.querySelector('#book-form');
+const titleInput = document.querySelector('#title');
+const authorInput = document.querySelector('#author');
+const pagesInput = document.querySelector('#pages');
+const readCheckbox = document.querySelector('#read');
+const submitButton = document.querySelector('.submit-btn');
+submitButton.addEventListener('click', (event) => {
+    if (form.checkValidity()) {
+        event.preventDefault();
+    }
+    addBookToLibrary(
+        titleInput.value,
+        authorInput.value,
+        pagesInput.value,
+        readCheckbox.checked)
+})

@@ -11,8 +11,8 @@
   <H1>Library Project</H1>
   <form action="#" method="get" id="book-form">
     <div class="book-details">
-      <label for="name">Book Name:</label>
-      <input type="text" name="name" id="name" required>
+      <label for="title">Book Title:</label>
+      <input type="text" name="title" id="title" required>
       <label for="author">Author:</label>
       <input type="text" name="author" id="author" required>
       <label for="pages"># of Pages:</label>
@@ -22,7 +22,7 @@
     </div>
     
     
-    <button type="submit">Input new book</button>
+    <button type="submit" class="submit-btn" onsubmit="event.preventDefault();">Input new book</button>
   </form>
   <button class="display-books-btn">Display library books</button>
 
