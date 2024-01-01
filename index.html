@@ -8,24 +8,40 @@
   <script src="./code.js" defer></script>
 </head>
 <body>
-  <H1>Library Project</H1>
-  <form action="#" method="get" id="book-form">
-    <div class="book-details">
-      <label for="title">Book Title:</label>
-      <input type="text" name="title" id="title" required>
-      <label for="author">Author:</label>
-      <input type="text" name="author" id="author" required>
-      <label for="pages"># of Pages:</label>
-      <input type="number" name="pages" id="pages" required>
-      <label for="read">Have you read?</label>
-      <input type="checkbox" name="read" id="read">
-    </div>
-    
-    
-    <button type="submit" class="submit-btn" onsubmit="event.preventDefault();">Input new book</button>
-  </form>
-  <button class="display-books-btn">Display library books</button>
+  <h1>Library Project</h1>
+  <h4 class="library-info"></h4>
+
+
+  
+  <div class="btn-container">
+    <button class="display-books-btn">Display library books</button>
+    <button class="add-book">Add New Books</button>
+  </div>
 
   <table class="books-table"></table>
+
+
+
+  <div class="form-modal">
+    <form action="#" method="get" id="book-form">
+      <h3>Input new book</h3>
+      <div class="book-details">
+        <label for="title">Book Title:</label>
+        <input type="text" name="title" id="title" required>
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" required>
+        <label for="pages"># of Pages:</label>
+        <input type="number" name="pages" id="pages" required>
+        <label for="read">Have you read?</label>
+        <input type="checkbox" name="read" id="read">
+      </div>
+      <div class="form-btn-container">
+        <button type="submit" class="modal-add-btn">Input new book</button>
+        <button type="button" class="modal-cancel-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+
 </body>
 </html>
