@@ -7,14 +7,23 @@
 
 :root{
   font-family: Roboto, serif;
+  --background-color: antiquewhite;
+  --btn-font-color: darkblue;
+  --btn-background-color: lightblue; 
 }
 
 button {
   cursor: pointer;
+  background-color: var(--btn-background-color);
+  color: var(--btn-font-color);
+  font-weight: bold;
+  appearance: none;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 body {
-  background-color: antiquewhite;
+  background-color: var(--background-color);
   margin-left: 10px;
 }
 
@@ -23,9 +32,6 @@ h1 {
 }
 
 .btn-container button {
-  appearance: none;
-  border: 1px solid black;
-  border-radius: 5px;
   padding: 5px 10px;
   margin: 15px 0;
 }
@@ -58,6 +64,11 @@ h1 {
   }
 }
 
+.books-table button {
+  padding: 0px 5px;
+  margin-left: 43px;
+}
+
 .form-modal {
   display: none;
   z-index: 1;
@@ -78,7 +89,7 @@ h1 {
     padding: 20px 40px;
     width: max-content;
     border-radius: 20px;
-    background-color: blanchedalmond;
+    background-color: var(--background-color);
   }
 }
 
@@ -124,3 +135,8 @@ form {
   }
 
 }
+
+.remove-entry, .have-read-button {
+  color: aliceblue;
+}
+

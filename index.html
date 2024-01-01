@@ -9,19 +9,20 @@
 </head>
 <body>
   <h1>Library Project</h1>
-  <h4 class="library-info"></h4>
-
-
-  
+  <h4 class="library-info">
+    <!-- generated content goes here  -->
+  </h4>
   <div class="btn-container">
     <button class="display-books-btn">Display library books</button>
     <button class="add-book">Add New Books</button>
   </div>
 
-  <table class="books-table"></table>
+  <table class="books-table">
+    <!-- generated content goes here -->
+  </table>
 
 
-
+  <!-- Modal Form -->
   <div class="form-modal">
     <form action="#" method="get" id="book-form">
       <h3>Input new book</h3>
@@ -31,7 +32,7 @@
         <label for="author">Author:</label>
         <input type="text" name="author" id="author" required>
         <label for="pages"># of Pages:</label>
-        <input type="number" name="pages" id="pages" required>
+        <input type="number" name="pages" id="pages" min="1" required>
         <label for="read">Have you read?</label>
         <input type="checkbox" name="read" id="read">
       </div>

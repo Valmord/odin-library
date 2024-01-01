@@ -2,7 +2,7 @@ const libraryOptions = {
     tableShown: false,
 }
 
-const myLibrary = [
+let myLibrary = [
     {   title:"The Secret of Terror Castle", 
         author:"Robert Arthur", 
         pages: 108, 
@@ -55,6 +55,29 @@ function displayLibraryBtn(){
 
 function displayLibrary(){
     booksTable.innerHTML = getBookTableHeader() + getBookTableRows();
+    addBookRemoveBtns();
+    addReadBtns();
+    updateLibraryInfo();
+}
+
+function addReadBtns(){
+    const tableReadBtns = document.querySelectorAll('.books-table .have-read-button');
+    tableReadBtns.forEach(btn => {
+        btn.addEventListener('click',() => {
+            myLibrary[btn.dataset.id].haveRead = true;
+            displayLibrary();
+        })
+    })
+}
+
+function addBookRemoveBtns(){
+    const tableDelBtns = document.querySelectorAll('.books-table .remove-entry');
+    tableDelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            myLibrary.splice(btn.dataset.id,1);
+            displayLibrary();
+        })
+    })
 }
 
 function getBookTableHeader(){
@@ -64,11 +87,13 @@ function getBookTableHeader(){
         <col class="table-column-2">
         <col class="table-column-3">
         <col class="table-column-4">
+        <col class="table-column-5">
     </colgroup>
     <th>Title</th>
     <th>Author</th>
     <th>Pages</th>
-    <th>Have read?</th>`
+    <th>Have read?</th>
+    <th>Remove Entry?</th>`
 
     return tableHeader;
 }
@@ -81,11 +106,18 @@ function getBookTableRows(){
         for (prop in currentBook){
             if (prop === 'haveRead') {
                 const read = currentBook[prop] ? 'Yes' : 'No';
-                bookRow += `<td>${read}</td>\n`
+                if (read === 'No') {
+                    bookRow += `<td>${read}<button data-id="${i}" class="have-read-button">✔</button></td>\n`
+                }
+                else {
+                    bookRow += `<td>${read}</td>\n`
+                }
+               
             } else {
                bookRow += `<td>${currentBook[prop]}</td>\n` 
             }
         }
+        bookRow += `<td><button class="remove-entry" data-id${i}>X</button></td>`
         bookRow += '</tr>'
         tableRows += bookRow;
     }
@@ -95,7 +127,7 @@ function getBookTableRows(){
 const libraryInfo = document.querySelector('.library-info');
 const booksTable = document.querySelector('.books-table');
 const displayBooksBtn = document.querySelector('.display-books-btn');
-const formModal = document.querySelector('.form-modal');
+const modalForm = document.querySelector('.form-modal');
 const form = document.querySelector('#book-form');
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
@@ -112,22 +144,28 @@ displayBooksBtn.onclick = displayLibraryBtn;
 modalAddBookBtn.addEventListener('click', (event) => {
     if (form.checkValidity()) {
         event.preventDefault();
+        addBookToLibrary(
+            titleInput.value,
+            authorInput.value,
+            pagesInput.value,
+            readCheckbox.checked);
+        if (libraryOptions.tableShown) displayLibrary();
+        form.reset();
     }
-    addBookToLibrary(
-        titleInput.value,
-        authorInput.value,
-        pagesInput.value,
-        readCheckbox.checked);
-    updateLibraryInfo();
-    if (libraryOptions.tableShown) displayLibrary();
-    form.reset();
 })
 
 newBookBtn.addEventListener('click', () => {
-    formModal.style.display = 'block';
+    modalForm.style.display = 'block';
 })
 
 modalCancelBtn.addEventListener('click', () => {
-    formModal.style.display = 'none';
+    modalForm.style.display = 'none';
     form.reset();
+})
+
+let test;
+modalForm.addEventListener('click', event => {
+    if (event.target.classList.contains('form-modal')) {
+        modalCancelBtn.click();
+    }
 })
