@@ -141,19 +141,6 @@ const modalCancelBtn = document.querySelector('.modal-cancel-btn');
 updateLibraryInfo();
 displayBooksBtn.onclick = displayLibraryBtn;
 
-modalAddBookBtn.addEventListener('click', (event) => {
-    if (form.checkValidity()) {
-        event.preventDefault();
-        addBookToLibrary(
-            titleInput.value,
-            authorInput.value,
-            pagesInput.value,
-            readCheckbox.checked);
-        if (libraryOptions.tableShown) displayLibrary();
-        form.reset();
-    }
-})
-
 newBookBtn.addEventListener('click', () => {
     modalForm.style.display = 'block';
 })
@@ -163,9 +150,21 @@ modalCancelBtn.addEventListener('click', () => {
     form.reset();
 })
 
-let test;
 modalForm.addEventListener('click', event => {
     if (event.target.classList.contains('form-modal')) {
         modalCancelBtn.click();
     }
+})
+
+form.addEventListener('submit', event => {
+    event.preventDefault();
+    addBookToLibrary(
+        titleInput.value,
+        authorInput.value,
+        pagesInput.value,
+        readCheckbox.checked);
+    if (libraryOptions.tableShown) {
+        displayLibrary();
+    } else updateLibraryInfo();
+    form.reset();
 })
