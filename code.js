@@ -33,6 +33,34 @@ function addBookToLibrary(title, author, pages, haveRead){
     myLibrary.push(newBook);
 }
 
+const displayBooksBtn = document.querySelector('.display-books-btn');
+displayBooksBtn.onclick = displayLibrary;
+const booksTable = document.querySelector('.books-table');
 function displayLibrary(){
-    //
+    libraryTable = 
+    `<colgroup>
+        <col class="table-column-1">
+        <col class="table-column-2">
+        <col class="table-column-3">
+        <col class="table-column-4">
+    </colgroup>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Pages</th>
+    <th>Has been read</th>`
+    for (let i = 0; i < myLibrary.length; i++){
+        let currentBook = myLibrary[i];
+        let bookRow = "<tr>\n"
+        for (prop in currentBook){
+            if (prop === 'haveRead') {
+                const read = currentBook[prop] ? 'Yes' : 'No';
+                bookRow += `<td>${read}</td>\n`
+            } else {
+               bookRow += `<td>${currentBook[prop]}</td>\n` 
+            }
+        }
+        bookRow += '</tr>'
+        libraryTable += bookRow;
+    }
+    booksTable.innerHTML = libraryTable;
 }

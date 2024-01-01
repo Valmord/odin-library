@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Project</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="./code.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Project</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./code.js" defer></script>
 </head>
 <body>
-    <H1>Library Project</H1>
-    <form action="#" method="get" id="book-form">
-        <div class="book-details">
-            <label for="name">Book Name:</label>
-            <input type="text" name="name" id="name" required>
-            <label for="author">Author:</label>
-            <input type="text" name="author" id="author" required>
-            <label for="pages"># of Pages:</label>
-            <input type="number" name="pages" id="pages" required>
-            <label for="read">Have you read?</label>
-            <input type="checkbox" name="read" id="read">
-        </div>
-        
-        
-        <button type="submit">Input new book</button>
-    </form>
-    <button>Display library books</button>
+  <H1>Library Project</H1>
+  <form action="#" method="get" id="book-form">
+    <div class="book-details">
+      <label for="name">Book Name:</label>
+      <input type="text" name="name" id="name" required>
+      <label for="author">Author:</label>
+      <input type="text" name="author" id="author" required>
+      <label for="pages"># of Pages:</label>
+      <input type="number" name="pages" id="pages" required>
+      <label for="read">Have you read?</label>
+      <input type="checkbox" name="read" id="read">
+    </div>
+    
+    
+    <button type="submit">Input new book</button>
+  </form>
+  <button class="display-books-btn">Display library books</button>
+
+  <table class="books-table"></table>
 </body>
 </html>
